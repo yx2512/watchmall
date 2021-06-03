@@ -1,0 +1,31 @@
+package com.yx.watchmall.enums;
+
+import lombok.Getter;
+
+@Getter
+public enum ResponseEnum {
+    RESOURCE_NOT_FOUND(-1,"RESOURCE NOT FOUND"),
+    LOGIN_FAILED(1,"INVALID EMAIL OR PASSWORD"),
+    USER_EXISTS(2,"USER EXISTS"),
+    PARAM_ERROR(3,"INVALID PARAM"),
+    NO_CURRENTUSER(4,"PLEASE LOGIN FIRST"),
+    NO_SUCH_CATEGORY(5,"NO SUCH CATEGORY"),
+    NO_CORRESPONDING_SHIPPING(6,"NO CORRESPONDING SHIPPING ADDRESS"),
+    NO_SUCH_PRODUCT(7,"NO SUCH PRODUCT"),
+    PRODUCT_UNAVAILABLE(8,"PRODUCT_UNAVAILABLE"),
+    LIMITED_STOCK(8,"LIMITED STOCK"),
+    NO_SUCH_PRODUCT_IN_CART(9,"NO SUCH PRODUCT IN CART"),
+    CART_SELECTED_EMPTY(10,"NOTHING IS SELECTED IN CART"),
+    NO_SUCH_ORDER(11,"NO SUCH ORDER"),
+    ORDER_STATUS_ERROR(12,"ORDER STATUS ERROR");
+
+
+
+    Integer code;
+    String msg;
+
+    ResponseEnum(Integer _code, String _msg) {
+        code = _code;
+        msg = _msg;
+    }
+}
