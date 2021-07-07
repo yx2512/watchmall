@@ -3,6 +3,7 @@ package com.yx.watchmall.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.yx.watchmall.enums.OrderStatusEnum;
 import com.yx.watchmall.enums.ResponseEnum;
+import com.yx.watchmall.exception.PaymentException;
 import com.yx.watchmall.mallConst.MallConst;
 import com.yx.watchmall.pojo.*;
 import com.yx.watchmall.repository.OrderItemRepository;
@@ -90,7 +91,8 @@ public class OrderService {
             }
 
             if(product.getStatus() < each.getQuantity()) {
-                return ResponseVo.error(ResponseEnum.LIMITED_STOCK.getCode(),each.getProductId() + "No enough stock for " + each.getProductId());
+                // TODO: come up with better warning information
+                return ResponseVo.error(ResponseEnum.LIMITED_STOCK.getCode(),"No enough stock for product with ID " + each.getProductId());
             }
 
             OrderItem orderItem = buildOrderItem(userId, orderNum, each.getQuantity(), product);
@@ -113,6 +115,8 @@ public class OrderService {
         }
 
         OrderVo orderVo = buildOrderVo(order, orderItemList, shipment);
+        orderVo.setCreateTime(save.getCreateTime());
+        orderVo.setUpdateTime(save.getUpdateTime());
         return ResponseVo.success(orderVo);
     }
 
@@ -146,8 +150,8 @@ public class OrderService {
 
     public ResponseVo<OrderVo> detail(Integer userId, Long orderNum) {
         Optional<Order> orderOptional = orderRepository.findByOrderNum(orderNum);
-        if(orderOptional.isEmpty() || !userId.equals(orderOptional.get().getUserId() )) {
-            return ResponseVo.error(ResponseEnum.NO_SUCH_ORDER.getCode(),"No such order with No. " + orderNum);
+        if(orderOptional.isEmpty() || !userId.equals(orderOptional.get().getUserId())) {
+            return ResponseVo.error(ResponseEnum.NO_SUCH_ORDER.getCode(),"No such order with No." + orderNum);
         }
 
         Order order = orderOptional.get();
@@ -165,8 +169,8 @@ public class OrderService {
 
     public ResponseVo cancel(Integer userId, Long orderNum) {
         Optional<Order> orderOptional = orderRepository.findByOrderNum(orderNum);
-        if(orderOptional.isEmpty()) {
-            return ResponseVo.error(ResponseEnum.NO_SUCH_ORDER);
+        if(orderOptional.isEmpty() || !userId.equals(orderOptional.get().getUserId())) {
+            return ResponseVo.error(ResponseEnum.NO_SUCH_ORDER.getCode(), "No such order with No." + orderNum);
         }
         Order order = orderOptional.get();
         if(!order.getStatus().equals(OrderStatusEnum.NO_PAY.getCode())) {
@@ -178,21 +182,23 @@ public class OrderService {
         return ResponseVo.success();
     }
 
-    public ResponseVo paid(Long orderNum) {
+    public void paid(Long orderNum) {
         Optional<Order> orderOptional = orderRepository.findByOrderNum(orderNum);
         if(orderOptional.isEmpty()) {
-            return ResponseVo.error(ResponseEnum.NO_SUCH_ORDER);
+            throw new PaymentException("Order doesn't exist. No." + orderNum);
         }
 
         Order order = orderOptional.get();
         if(!order.getStatus().equals(OrderStatusEnum.NO_PAY.getCode())) {
-            return ResponseVo.error(ResponseEnum.ORDER_STATUS_ERROR.getCode(), "Cannot change status of order " + order.getOrderNum() + "to paid");
+            throw new PaymentException("Order status error. No."+orderNum);
         }
 
         order.setStatus(OrderStatusEnum.PAID.getCode());
         order.setPaymentTime(new Date());
-        orderRepository.save(order);
-        return ResponseVo.success();
+        Order saved = orderRepository.save(order);
+        if(saved.getId() == null) {
+            throw new RuntimeException("Payment status saved error");
+        }
     }
 
     private Long generateOrderNum() {
@@ -205,6 +211,7 @@ public class OrderService {
         orderItem.setOrderNum(orderNum);
         orderItem.setProductId(product.getId());
         orderItem.setDescription(product.getDescription());
+        orderItem.setMainImg(product.getMainImg());
         orderItem.setUnitPrice(product.getPrice());
         orderItem.setQuantity(quantity);
         orderItem.setTotalPrice(product.getPrice().multiply(BigDecimal.valueOf(quantity)));

@@ -20,6 +20,11 @@ public class RunTimeExceptionHandler {
         return ResponseVo.error(ResponseEnum.PARAM_ERROR);
     }
 
+    @ExceptionHandler(PaymentException.class)
+    public @ResponseBody ResponseVo paymentExceptionHandler(PaymentException e) {
+        return ResponseVo.error(ResponseEnum.PAYMENT_ERROR.getCode(),e.getMessage());
+    }
+
     @ExceptionHandler(UserLoginException.class)
     public @ResponseBody ResponseVo userLoginExceptionHandler() {
         return ResponseVo.error(ResponseEnum.NO_CURRENTUSER);

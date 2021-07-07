@@ -9,10 +9,9 @@ import java.util.Date;
 public class OrderItemVo {
     private Long orderNum;
     private Integer productId;
-    private String productDesc;
+    private String description;
     private String mainImg;
     private BigDecimal unitPrice;
     private Integer quantity;
     private BigDecimal totalPrice;
-    private Date createTime;
 }

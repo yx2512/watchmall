@@ -1,5 +1,8 @@
 package com.yx.watchmall.pojo;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -32,7 +35,7 @@ public class Order {
         Id = id;
     }
 
-    @Column(nullable = false)
+    @Column(name = "order_num", nullable = false)
     public Long getOrderNum() {
         return orderNum;
     }
@@ -41,7 +44,7 @@ public class Order {
         this.orderNum = orderNum;
     }
 
-    @Column(nullable = false)
+    @Column(name = "user_id", nullable = false)
     public Integer getUserId() {
         return userId;
     }
@@ -50,7 +53,7 @@ public class Order {
         this.userId = userId;
     }
 
-    @Column(nullable = false)
+    @Column(name = "shipping_id",nullable = false)
     public Integer getShippingId() {
         return shippingId;
     }
@@ -59,7 +62,7 @@ public class Order {
         this.shippingId = shippingId;
     }
 
-    @Column(nullable = false)
+    @Column(name = "payment",nullable = false)
     public BigDecimal getPayment() {
         return payment;
     }
@@ -68,7 +71,7 @@ public class Order {
         this.payment = payment;
     }
 
-    @Column(nullable = false)
+    @Column(name = "postage",nullable = false)
     public Integer getPostage() {
         return postage;
     }
@@ -76,7 +79,7 @@ public class Order {
     public void setPostage(Integer postage) {
         this.postage = postage;
     }
-    @Column
+    @Column(name = "payment_time")
     public Date getPaymentTime() {
         return paymentTime;
     }
@@ -84,7 +87,7 @@ public class Order {
     public void setPaymentTime(Date paymentTime) {
         this.paymentTime = paymentTime;
     }
-    @Column
+    @Column(name = "shipped_time")
     public Date getShippedTime() {
         return shippedTime;
     }
@@ -92,7 +95,7 @@ public class Order {
     public void setShippedTime(Date shippedTime) {
         this.shippedTime = shippedTime;
     }
-    @Column
+    @Column(name = "received_time")
     public Date getReceivedTime() {
         return receivedTime;
     }
@@ -108,7 +111,8 @@ public class Order {
     public void setStatus(Integer status) {
         this.status = status;
     }
-    @Column
+    @Column(name = "create_time")
+    @Generated(GenerationTime.INSERT)
     public Date getCreateTime() {
         return createTime;
     }
@@ -116,7 +120,8 @@ public class Order {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-    @Column
+    @Column(name = "update_time")
+    @Generated(GenerationTime.ALWAYS)
     public Date getUpdateTime() {
         return updateTime;
     }
@@ -124,7 +129,7 @@ public class Order {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-    @Column
+    @Column(name = "closed_time")
     public Date getClosedTime() {
         return closedTime;
     }
