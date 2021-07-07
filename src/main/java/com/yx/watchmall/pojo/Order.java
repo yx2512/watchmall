@@ -151,6 +151,4 @@ public class Order {
                 ", closedTime=" + closedTime +
                 '}';
     }
-
-
 }

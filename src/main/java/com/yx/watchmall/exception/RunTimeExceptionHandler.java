@@ -25,6 +25,11 @@ public class RunTimeExceptionHandler {
         return ResponseVo.error(ResponseEnum.NO_CURRENTUSER);
     }
 
+    @ExceptionHandler(InsufficientPermissionException.class)
+    public @ResponseBody ResponseVo insufficientPermissionExceptionHandler() {
+        return ResponseVo.error(ResponseEnum.INSUFFICIENT_PERMISSION);
+    }
+
     @ExceptionHandler(NoHandlerFoundException.class)
     public @ResponseBody ResponseVo resourceNotFound() {
         return ResponseVo.error(ResponseEnum.RESOURCE_NOT_FOUND);

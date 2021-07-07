@@ -4,13 +4,13 @@
 
 > request
 
-```No arguments```
+```No arguments required```
 
 > response
 
-
 success
-```
+
+```json
 {
   "status": 0,
   "data": [
@@ -162,7 +162,7 @@ success
 
 success
 
-```
+```json
 {
   "status": 0,
   "data": {
@@ -177,7 +177,7 @@ success
 
 fail
 
-```
+```json
 {
   "status": 5,
   "msg": "NO SUCH CATEGORY"

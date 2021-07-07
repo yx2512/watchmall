@@ -1,2 +1,2 @@
 # watchmall
-A spring based backend for shipping mall application
+A spring based backend for a online watch store

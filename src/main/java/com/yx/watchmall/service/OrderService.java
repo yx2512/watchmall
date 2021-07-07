@@ -9,6 +9,7 @@ import com.yx.watchmall.repository.OrderItemRepository;
 import com.yx.watchmall.repository.OrderRepository;
 import com.yx.watchmall.repository.ProductRepository;
 import com.yx.watchmall.repository.ShipmentRepository;
+import com.yx.watchmall.util.OrderNoUtil;
 import com.yx.watchmall.vo.OrderItemVo;
 import com.yx.watchmall.vo.OrderVo;
 import com.yx.watchmall.vo.ResponseVo;
@@ -106,7 +107,6 @@ public class OrderService {
             throw new RuntimeException(String.format("order %d creation failed",order.getOrderNum()));
         }
 
-        // TODO:check if success
         orderItemRepository.saveAll(orderItemList);
         for(CartProduct cartProduct : cartProductList) {
             cartService.delete(userId,cartProduct.getProductId());
@@ -126,7 +126,7 @@ public class OrderService {
         List<Order> subOrderList = orderList.subList((int) pageable.getOffset(), (int) Math.min(orderList.size(), pageable.getOffset() + pageSize));
 
         Set<Long> orderNums = subOrderList.stream().map(Order::getOrderNum).collect(Collectors.toSet());
-        List<OrderItem> subOrderItemList = orderItemRepository.findAllByOrderNum(orderNums);
+        List<OrderItem> subOrderItemList = orderItemRepository.findAllByOrderNumIn(orderNums);
         Map<Long, List<OrderItem>> subOrderItemMap = subOrderItemList.stream().collect(Collectors.groupingBy(OrderItem::getOrderNum));
 
         Set<Integer> subShippingIds = subOrderList.stream().map(Order::getShippingId).collect(Collectors.toSet());
@@ -153,7 +153,7 @@ public class OrderService {
         Order order = orderOptional.get();
         Set<Long> orderNumSet = new HashSet<>();
         orderNumSet.add(order.getOrderNum());
-        List<OrderItem> orderItemList = orderItemRepository.findAllByOrderNum(orderNumSet);
+        List<OrderItem> orderItemList = orderItemRepository.findAllByOrderNumIn(orderNumSet);
 
         Optional<Shipment> shipmentOptional = shipmentRepository.findById(order.getShippingId());
         if(shipmentOptional.isEmpty()) {
@@ -195,9 +195,8 @@ public class OrderService {
         return ResponseVo.success();
     }
 
-    //TODO: snowflake algorithm
     private Long generateOrderNum() {
-        return System.currentTimeMillis() + new Random().nextInt(999);
+        return OrderNoUtil.nextOrderNo();
     }
 
     private OrderItem buildOrderItem(Integer userId, Long orderNum, Integer quantity, Product product) {

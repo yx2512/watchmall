@@ -6,16 +6,16 @@
 
 Content-Type: application/json
 
-```
+```json
 {
-	"username":"admin",
-	"password":"admin",
+	"email": "admin@watchmall.com",
+	"password": "admin"
 }
 ```
 > response
 
 fail
-```
+```json
 {
     "status": 1,
     "msg": "INVALID EMAIL OR PASSWORD"
@@ -23,7 +23,7 @@ fail
 ```
 
 success
-```
+```json
 {
   "status": 0,
   "data": {
@@ -40,18 +40,19 @@ success
 -------
 
 #### 2.Register
+
 **POST /user/register**
 
 > request
 
 Content-Type: application/json
 
-```
+```json
 {
-	"username":"admin",
-	"email":"admin@watchmall.com"
-	"password":"admin",
-	"phone":"1234567788"
+	"username": "admin",
+	"email": "admin@watchmall.com",
+	"password": "admin",
+	"phone": "1234567788"
 }
 ```
 
@@ -59,7 +60,7 @@ Content-Type: application/json
 > response
 
 success
-```
+```json
 {
     "status": 0
 }
@@ -67,7 +68,7 @@ success
 
 
 fail
-```
+```json
 {
     "status": 2,
     "msg": "USER EXISTS"
@@ -86,7 +87,7 @@ No arguments required
 > response
 
 success
-```
+```json
 {
   "status": 0,
   "data": {
@@ -100,12 +101,11 @@ success
 ```
 
 fail
-```
+```json
 {
     "status": 4,
     "msg": "PLEASE LOGIN FIRST"
 }
-
 ```
 
 ------
@@ -117,22 +117,21 @@ fail
 > request
 
 ```
-No argument required
+No arguments required
 ```
 
 > response
 
 success
 
-```
+```json
 {
-    "status": 0,
-    "msg": "退出成功"
+    "status": 0
 }
 ```
 
 fail
-```
+```json
 {
     "status": -1,
     "msg": "INTERNAL ERROR"

@@ -1,27 +1,29 @@
-#### 1.Add new shipping address for current user
+#### 1.Add new shipping address to current user's profile
 
-**POST /shippings**
+**POST /shipments**
 
 
 > request
 
 Content-Type: application/json
 
-```
-receiverName=David
-receiverMobile=3215437777
-receiverState=IN
-receiverCity=Lafayette
-receiverAddr=Somewhere on this planet
-receiverApt=APT101
-receiverZip=47901
+```json
+{
+  "receiverName": "David",
+  "receiverMobile": "3215437777",
+  "receiverState": "IN",
+  "receiverCity": "Lafayette",
+  "receiverAddr": "Somewhere on this planet",
+  "receiverApt": "APT101",
+  "receiverZip": "47901" 
+}
 ```
 
 > response
 
 success
 
-```
+```json
 {
     "status": 0,
     "data": {
@@ -31,89 +33,90 @@ success
 ```
 
 fail
-```
+
+```json
 {
   "status": 4,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
 
-
 ------
 
-
-#### 2.Delete shipping address of current user
+#### 2.Delete one shipping address from current user's profile
 
 **DELETE /shippings/{shippingId}**
 
 > request
 
+```Id of shipping address```
+
 > response
 
 success
 
-```
+```json
 {
-    "status": 0,
+    "status": 0
 }
 ```
 
 fail
-```
+
+```json
 {
   "status": 4,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
 
-
 ------
 
+#### 3.Update one shipping address of current user
 
-#### 3.Update shipping address of current user
-
-**PUT /shippings/{shippingId}**
+**PUT /shipments/{shippingId}**
 
 > request
 
 Content-Type: application/json
 
-```
-receiverName=David
-receiverMobile=3215437777
-receiverState=IN
-receiverCity=Lafayette
-receiverAddr=Somewhere on this planet
-receiverApt=APT101
-receiverZip=47901
+```json
+{
+  "receiverName": "David",
+  "receiverMobile": "3215437777",
+  "receiverState": "IN",
+  "receiverCity": "Lafayette",
+  "receiverAddr": "Somewhere on this planet",
+  "receiverApt": "APT101",
+  "receiverZip": "47901"
+}
 ```
 
 > response
 
 success
 
-```
+```json
 {
-    "status": 0,
+    "status": 0
 }
 ```
 
 fail
 
-```
+```json
 {
   "status": 4,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
 
-```
+```json
 {
   "status": 6,
   "msg": "NO CORRESPONDING SHIPPING ADDRESS"
 }
 ```
-
 
 ------
 
@@ -131,7 +134,7 @@ pageNum(default 1),pageSize(default 10)
 
 success
 
-```
+```json
 {
   "status": 0,
   "data": {
@@ -180,17 +183,17 @@ success
 ```
 
 fail
-```
+
+```json
 {
   "status": 4,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
 
-```
+```json
 {
   "status": 6,
   "msg": "NO CORRESPONDING SHIPPING ADDRESS"
 }
 ```
-
