@@ -63,28 +63,28 @@ fail
 
 ```json
 {
-  "status": 10,
+  "status": 51,
   "msg": "NOTHING IS SELECTED IN CART"
 }
 ```
 
 ```json
 {
-  "status": 6,
+  "status": 30,
   "msg": "Cannot find shipping address with ID: 100"
 }
 ```
 
 ```json
 {
-  "status": 8,
+  "status": 42,
   "msg": "No enough stock for product with ID 2"
 }
 ```
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -218,7 +218,7 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -286,14 +286,14 @@ fail
 
 ```json
 {
-  "status": 11,
+  "status": 60,
   "msg": "No such order with No.100232211726369"
 }
 ```
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -324,21 +324,21 @@ fail
 
 ```json
 {
-  "status": 11,
+  "status": 60,
   "msg": "No such order with No.100230833897509"
 }
 ```
 
 ```json
 {
-  "status": 12,
+  "status": 61,
   "msg": "Cannot cancel order 100230833897504"
 }
 ```
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```

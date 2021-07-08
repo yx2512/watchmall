@@ -37,7 +37,7 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -88,21 +88,21 @@ fail
 
 ```json
 {
-  "status": 7,
+  "status": 40,
   "msg": "NO SUCH PRODUCT"
 }
 ```
 
 ```json
 {
-  "status": 8,
+  "status": 41,
   "msg": "PRODUCT_UNAVAILABLE"
 }
 ```
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -156,14 +156,14 @@ fail
 
 ```json
 {
-  "status": 9,
+  "status": 50,
   "msg": "NO SUCH PRODUCT IN CART"
 }
 ```
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -211,7 +211,7 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -259,7 +259,7 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -291,7 +291,7 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```

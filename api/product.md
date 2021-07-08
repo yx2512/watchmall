@@ -122,7 +122,7 @@ success
 fail
 ```json
 {
-  "status": 7,
+  "status": 40,
   "msg": "NO SUCH PRODUCT"
 }
 ```

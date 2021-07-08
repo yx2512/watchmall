@@ -36,7 +36,7 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -65,7 +65,7 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
@@ -106,14 +106,14 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
 
 ```json
 {
-  "status": 6,
+  "status": 30,
   "msg": "NO CORRESPONDING SHIPPING ADDRESS"
 }
 ```
@@ -186,14 +186,14 @@ fail
 
 ```json
 {
-  "status": 4,
+  "status": 12,
   "msg": "PLEASE LOGIN FIRST"
 }
 ```
 
 ```json
 {
-  "status": 6,
+  "status": 30,
   "msg": "NO CORRESPONDING SHIPPING ADDRESS"
 }
 ```

@@ -8,21 +8,15 @@ Content-Type: application/json
 
 ```json
 {
-	"email": "admin@watchmall.com",
-	"password": "admin"
+  "email": "admin@watchmall.com",
+  "password": "admin"
 }
 ```
+
 > response
 
-fail
-```json
-{
-    "status": 1,
-    "msg": "INVALID EMAIL OR PASSWORD"
-}
-```
-
 success
+
 ```json
 {
   "status": 0,
@@ -36,6 +30,14 @@ success
 }
 ```
 
+fail
+
+```json
+{
+    "status": 10,
+    "msg": "INVALID EMAIL OR PASSWORD"
+}
+```
 
 -------
 
@@ -49,44 +51,46 @@ Content-Type: application/json
 
 ```json
 {
-	"username": "admin",
-	"email": "admin@watchmall.com",
-	"password": "admin",
-	"phone": "1234567788"
+  "username": "admin",
+  "email": "admin@watchmall.com",
+  "password": "admin",
+  "phone": "1234567788"
 }
 ```
-
 
 > response
 
 success
+
 ```json
 {
-    "status": 0
+  "status": 0
 }
 ```
-
 
 fail
+
 ```json
 {
-    "status": 2,
-    "msg": "USER EXISTS"
+  "status": 11,
+  "msg": "USER EXISTS"
 }
 ```
 
-
 #### 3.Get Current User Information
+
 **GET /user**
 
 > request
 
-```
+```text
 No arguments required
 ```
+
 > response
 
 success
+
 ```json
 {
   "status": 0,
@@ -101,22 +105,23 @@ success
 ```
 
 fail
+
 ```json
 {
-    "status": 4,
+    "status": 12,
     "msg": "PLEASE LOGIN FIRST"
 }
 ```
 
-------
-
+-------
 
 #### 4.Logout
+
 **POST /user/logout**
 
 > request
 
-```
+```text
 No arguments required
 ```
 
@@ -131,10 +136,10 @@ success
 ```
 
 fail
+
 ```json
 {
     "status": -1,
     "msg": "INTERNAL ERROR"
 }
 ```
-

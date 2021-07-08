@@ -179,7 +179,7 @@ fail
 
 ```json
 {
-  "status": 5,
+  "status": 20,
   "msg": "NO SUCH CATEGORY"
 }
 ```
