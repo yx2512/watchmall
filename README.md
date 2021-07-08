@@ -30,3 +30,6 @@ This is a demo project based on Spring framework, which implements an online wat
 [order](./api/order.md)
 
 ### Database Design
+
+![MySQL Workbench Overview](./watchmall.png)\
+[sql file](./watchmall.sql)
