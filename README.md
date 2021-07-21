@@ -12,11 +12,13 @@ This is a demo project based on Spring framework, which implements an online wat
 
 ### Functionalities
 
+For detailed information please refer to API Reference.
+
 ✅&nbsp; user login/logout/registration\
 ✅&nbsp; list product categories\
-✅&nbsp; list products / product details\
-✅&nbsp; filter products by attributes\
-✅&nbsp; adding items to cart / checkout from cart\
+✅&nbsp; list products / show product details\
+✅&nbsp; filter products by categories and attributes\
+✅&nbsp; add items to cart / checkout from cart\
 ✅&nbsp; place order / cancel order / make payments
 
 ### API Reference
