@@ -1,5 +1,7 @@
 #### 1. List all items in cart
 
+**GET /cart**
+
 >request
 
 ```text
